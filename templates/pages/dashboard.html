@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}{{ page.title }} · {{ branding.university_name }}{% endblock %}
+{% block content %}
+<div class="page-container">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{% url 'home' %}">Home</a><span aria-hidden="true">/</span><span>{{ page.audience }}</span></nav>
+  <header class="page-header"><div><p class="eyebrow">Demonstration interface</p><h1>{{ page.title }}</h1><p>{{ page.description }} All cards and entries below are non-persistent example content.</p></div><div class="page-actions"><button class="button button--secondary" type="button" disabled>Export later</button><button class="button button--primary" type="button" disabled>New timetable</button></div></header>
+  <div class="alert alert--info" role="status"><strong>Preview mode.</strong> This Phase 1 interface is not connected to users, timetable records, or notifications.</div>
+
+  <section class="stats-grid" aria-label="Summary preview">
+    <article class="stat-card"><span class="stat-label">Current status</span><strong>Published</strong><span class="stat-detail">Example version status</span></article>
+    <article class="stat-card"><span class="stat-label">Today's classes</span><strong>04</strong><span class="stat-detail">Placeholder schedule count</span></article>
+    <article class="stat-card"><span class="stat-label">Open conflicts</span><strong>00</strong><span class="stat-detail">No live validation exists yet</span></article>
+    <article class="stat-card"><span class="stat-label">Pending review</span><strong>—</strong><span class="stat-detail">Available in a later phase</span></article>
+  </section>
+
+  <div class="content-grid content-grid--wide">
+    {% include "components/timetable.html" %}
+    <section class="card status-card"><div class="card-heading"><div><p class="eyebrow">Lifecycle reference</p><h2>Schedule status</h2></div>{% include "components/badge.html" with label="Published" tone="success" icon="✓" %}</div><ol class="status-timeline"><li class="is-complete">Draft</li><li class="is-complete">Review</li><li class="is-complete">Approved</li><li class="is-current">Published</li><li>Archived</li></ol><p class="component-note">A visual state pattern only; publication controls are intentionally unavailable.</p></section>
+  </div>
+
+  <div class="content-grid">
+    <section class="card"><div class="card-heading"><div><p class="eyebrow">Reusable table pattern</p><h2>Recent schedule changes</h2></div><button class="button button--ghost" type="button" disabled>Filter</button></div><div class="table-scroll"><table><thead><tr><th scope="col">Change</th><th scope="col">Effective</th><th scope="col">Status</th><th scope="col"><span class="sr-only">Actions</span></th></tr></thead><tbody><tr><td><strong>Room change</strong><span class="table-subtext">Database Systems · Room 204 → 305</span></td><td>Example only</td><td>{% include "components/badge.html" with label="Changed" tone="info" icon="↻" %}</td><td><button class="table-action" type="button" disabled>View</button></td></tr><tr><td><strong>Class cancellation</strong><span class="table-subtext">Networks · reason displayed later</span></td><td>Example only</td><td>{% include "components/badge.html" with label="Cancelled" tone="danger" icon="×" %}</td><td><button class="table-action" type="button" disabled>View</button></td></tr></tbody></table></div></section>
+    <section class="card"><div class="card-heading"><div><p class="eyebrow">Feedback pattern</p><h2>Notifications</h2></div></div>{% include "components/empty_state.html" with icon="◌" title="No notifications yet" description="Relevant timetable notices will appear here when notifications are implemented." %}</section>
+  </div>
+
+  <section class="card form-preview"><div class="card-heading"><div><p class="eyebrow">Reusable form pattern</p><h2>Timetable search preview</h2></div></div><form><div class="form-grid"><div class="field"><label for="course">Course <span aria-label="required">*</span></label><input id="course" type="text" placeholder="Search will be available later" disabled><small>Use clear labels, helper text and server-side validation in future forms.</small></div><div class="field"><label for="date">Date</label><input id="date" type="date" disabled></div><div class="field"><label for="scope">View</label><select id="scope" disabled><option>Section timetable</option></select></div></div><div class="form-actions"><button class="button button--primary" type="button" disabled>Search timetable</button><span class="form-message">Controls are intentionally inactive in this visual-only phase.</span></div></form></section>
+
+  <section class="loading-grid" aria-label="Loading style preview"><div class="skeleton-card"><span></span><span></span><span></span></div><div class="skeleton-card"><span></span><span></span><span></span></div><div class="skeleton-card"><span></span><span></span><span></span></div></section>
+</div>
+{% endblock %}

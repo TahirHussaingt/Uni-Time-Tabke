@@ -1,0 +1,7 @@
+{% load static %}
+<a class="brand" href="{% url 'home' %}" aria-label="{{ branding.university_name }} home">
+  {% if branding.logo_available %}
+    <img class="brand-logo" src="{% static branding.logo_path %}" alt="{{ branding.university_name }} official logo">
+  {% endif %}
+  <span class="brand-copy"><strong>{{ branding.university_name }}</strong><small>{{ branding.department_name }}</small></span>
+</a>

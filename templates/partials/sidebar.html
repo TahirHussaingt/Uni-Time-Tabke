@@ -1,0 +1,17 @@
+<aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+  <div class="sidebar-brand">{% include "partials/brand.html" %}</div>
+  <nav class="sidebar-nav">
+    <p class="nav-label">Workspace</p>
+    <a class="nav-link {% if page_name == 'dashboard' %}is-active{% endif %}" href="{% url 'dashboard' %}"><span aria-hidden="true">⌂</span> Dashboard</a>
+    <p class="nav-label">Preview roles</p>
+    <a class="nav-link {% if page_name == 'student' %}is-active{% endif %}" href="{% url 'student-dashboard' %}"><span aria-hidden="true">◉</span> Student</a>
+    <a class="nav-link {% if page_name == 'teacher' %}is-active{% endif %}" href="{% url 'teacher-dashboard' %}"><span aria-hidden="true">◈</span> Teacher</a>
+    <a class="nav-link {% if page_name == 'admin' %}is-active{% endif %}" href="{% url 'admin-dashboard' %}"><span aria-hidden="true">▦</span> Administration</a>
+    <p class="nav-label">Future modules</p>
+    <a class="nav-link is-disabled" href="#" aria-disabled="true"><span aria-hidden="true">▤</span> Timetables</a>
+    <a class="nav-link is-disabled" href="#" aria-disabled="true"><span aria-hidden="true">!</span> Conflicts</a>
+    <a class="nav-link is-disabled" href="#" aria-disabled="true"><span aria-hidden="true">⚙</span> Settings</a>
+  </nav>
+  <div class="sidebar-footer"><span class="status-dot" aria-hidden="true"></span> Visual foundation preview</div>
+</aside>
+<div class="sidebar-backdrop" data-sidebar-close hidden></div>

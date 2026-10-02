@@ -13,7 +13,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", secrets.token_urlsafe(50))
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "testserver"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "config.apps.ConfigConfig",
 ]
 
 MIDDLEWARE = [
@@ -39,13 +40,14 @@ ROOT_URLCONF = "config.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "config.context_processors.branding",
             ],
         },
     },
@@ -85,5 +87,13 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
+UNIVERSITY_NAME = os.environ.get("UNIVERSITY_NAME", "FUUAST")
+UNIVERSITY_DEPARTMENT_NAME = os.environ.get(
+    "UNIVERSITY_DEPARTMENT_NAME", "University Timetable Management System"
+)
+UNIVERSITY_LOGO_PATH = "images/FUUAST_Logo.svg"
+UNIVERSITY_LOGO_FILE = BASE_DIR / "static" / UNIVERSITY_LOGO_PATH
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
